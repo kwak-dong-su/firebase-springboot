@@ -1,2 +1,12 @@
 server:
   port: 3333
+
+#spring:
+#  cloud:
+#    gcp:
+#      project-id: test-db-d94f0
+#      credentials:
+#        location: classpath=C:\MyProject\firebase-test-db\src\main\resources\private_key.json
+
+#GOOGLE_APPLICATION_CREDENTIALS: C:\MyProject\firebase-test-db\src\main\resources\private_key.json
+#GOOGLE_APPLICATION_CREDENTIALS: private_key.json

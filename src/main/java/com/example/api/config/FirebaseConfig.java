@@ -15,8 +15,12 @@ public class FirebaseConfig {
     public void init(){
         try {
             FileInputStream serviceAccount = new FileInputStream("src/main/resources/private_key.json");
-            FirebaseOptions options = new FirebaseOptions.Builder()
+//            FirebaseOptions options = new FirebaseOptions.Builder()
+//                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+//                    .build();
+            FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+//                    .setDatabaseUrl("https://test-db-d94f0.firebaseio.com/")
                     .build();
             FirebaseApp.initializeApp(options);
         }
