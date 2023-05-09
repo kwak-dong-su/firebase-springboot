@@ -4,6 +4,7 @@ import com.example.api.config.request.SendMessageRequest;
 import com.google.api.services.storage.Storage;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessagingException;
 import com.google.firebase.messaging.Message;
 import com.google.firebase.messaging.Notification;
@@ -113,5 +114,23 @@ public class FcmController {
         System.out.println(body);
 
         return null;
+    }
+
+    @PostMapping(value = "/dry-run", produces = "application/json")
+    public String dryRun(@RequestBody SendMessageRequest request) throws FirebaseMessagingException {
+
+        Notification notification = Notification.builder()
+                .setTitle(request.getTitle())
+                .setBody(request.getContent())
+                .build();
+
+        Message message = Message.builder()
+                .setToken(request.getToken())
+                .setNotification(notification)
+                .build();
+
+        String response = FirebaseMessaging.getInstance(FirebaseApp.getInstance()).send(message, true);
+        System.out.println(response);
+        return response;
     }
 }
