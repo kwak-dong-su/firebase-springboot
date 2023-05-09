@@ -13,7 +13,7 @@ import java.util.concurrent.ExecutionException;
 @RestController
 @RequestMapping("/")
 @CrossOrigin(origins = "*")
-public class FirebaseController {
+public class FirestoreController {
 
     @GetMapping(produces = "application/json")
     public String get() throws ExecutionException, InterruptedException {
