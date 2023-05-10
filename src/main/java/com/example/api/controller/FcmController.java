@@ -1,10 +1,7 @@
 package com.example.api.controller;
 
-import com.example.api.config.request.SendMessageRequest;
-import com.google.api.services.storage.Storage;
+import com.example.api.request.SendMessageRequest;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.*;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
