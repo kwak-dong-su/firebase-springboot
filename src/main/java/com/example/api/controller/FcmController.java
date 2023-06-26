@@ -195,4 +195,24 @@ public class FcmController {
         System.out.println(response);
         return response;
     }
+
+    @PostMapping(value = "/multicast", produces = "application/json")
+    public String multicastMessage(@RequestBody List<String> tokenList) throws FirebaseMessagingException {
+
+        Notification notification = Notification.builder()
+                .setTitle("send all")
+                .setBody("send all")
+                .build();
+
+        MulticastMessage message = MulticastMessage.builder()
+                .setNotification(notification)
+                .addAllTokens(tokenList)
+                .build();
+
+        BatchResponse response = FirebaseMessaging.getInstance().sendMulticast(message);
+        System.out.println("responses: "+response.getResponses());
+        System.out.println("success: "+response.getSuccessCount());
+        System.out.println("fail: "+response.getFailureCount());
+        return response.toString();
+    }
 }
