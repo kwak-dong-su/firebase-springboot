@@ -209,7 +209,7 @@ public class FcmController {
                 .addAllTokens(tokenList)
                 .build();
 
-        BatchResponse response = FirebaseMessaging.getInstance().sendMulticast(message);
+        BatchResponse response = FirebaseMessaging.getInstance().sendEachForMulticast(message);
         System.out.println("responses: "+response.getResponses());
         System.out.println("success: "+response.getSuccessCount());
         System.out.println("fail: "+response.getFailureCount());
